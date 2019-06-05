@@ -21,10 +21,14 @@ exports.getImageForAds = function (req, res) {
         if (err) {
             res.status(500).json(err);
         } else {
-            for (let i = 0; i <= data.length - 1; i++) {
-                data[i].adsImageName = appSetting.adsServerPath + data[i].adsImageName;
+            if (data.length === 0) {
+                res.status(200).json(data);
+            } else {
+                for (let i = 0; i <= data.length - 1; i++) {
+                    data[i].adsImageName = appSetting.adsServerPath + data[i].adsImageName;
+                }
+                res.status(200).json(data);
             }
-            res.status(200).json(data);
         }
     })
 }
@@ -57,11 +61,16 @@ exports.deleteAds = function (req, res) {
                                         message: "Some error occurred while retrieving notes."
                                     });
                                 } else {
-                                    var adsLength = adsImages.length - 1;
-                                    for (var i = 0; i <= adsLength; i++) {
-                                        adsImages[i].adsImageName = appSetting.adsServerPath + adsImages[i].adsImageName;
+                                    if (adsImages.length === 0) {
+                                        res.status(200).json(adsImages)
+                                    } else {
+                                        var adsLength = adsImages.length - 1;
+                                        for (var i = 0; i <= adsLength; i++) {
+                                            adsImages[i].adsImageName = appSetting.adsServerPath + adsImages[i].adsImageName;
+                                        }
+                                        res.status(200).json(adsImages);
                                     }
-                                    res.status(200).json(adsImages);
+
                                 }
                             });
                         }

@@ -149,7 +149,9 @@ exports.updateFooterDetails = function (req, res) {
                                 "result": 'error occured while retreiving data'
                             })
                         } else {
-                            footerData[0].logoImageName = appSetting.footerServerPath + footerData[0].logoImageName;
+                            if (footerData.length !== 0) {
+                                footerData[0].logoImageName = appSetting.footerServerPath + footerData[0].logoImageName;
+                            }
                             res.status(200).json(footerData);
                         }
                     })

@@ -26,11 +26,16 @@ exports.getBanners = function (req, res) {
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-            var bannerLength = bannerImages.length - 1;
-            for (var i = 0; i <= bannerLength; i++) {
-                bannerImages[i].bannerImage = appSetting.bannerServerPath + bannerImages[i].bannerImage;
+            if (bannerImages.length === 0) {
+                res.status(200).json(bannerImages);
+            } else {
+                var bannerLength = bannerImages.length - 1;
+                for (var i = 0; i <= bannerLength; i++) {
+                    bannerImages[i].bannerImage = appSetting.bannerServerPath + bannerImages[i].bannerImage;
+                }
+                res.status(200).json(bannerImages);
             }
-            res.status(200).json(bannerImages);
+
         }
     });
 }
@@ -64,11 +69,16 @@ exports.deleteBanners = function (req, res) {
                                         message: "Some error occurred while retrieving notes."
                                     });
                                 } else {
-                                    var bannerLength = bannerImages.length - 1;
-                                    for (var i = 0; i <= bannerLength; i++) {
-                                        bannerImages[i].bannerImage = appSetting.bannerServerPath + bannerImages[i].bannerImage;
+                                    if (bannerImages.length === 0) {
+                                        res.status(200).json(bannerImages);
+                                    } else {
+                                        var bannerLength = bannerImages.length - 1;
+                                        for (var i = 0; i <= bannerLength; i++) {
+                                            bannerImages[i].bannerImage = appSetting.bannerServerPath + bannerImages[i].bannerImage;
+                                        }
+                                        res.status(200).json(bannerImages);
                                     }
-                                    res.status(200).json(bannerImages);
+
                                 }
                             });
                         }
