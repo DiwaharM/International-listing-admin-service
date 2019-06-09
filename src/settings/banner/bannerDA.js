@@ -3,19 +3,38 @@ var appSetting = require('../../config/appSettings');
 var fs = require('fs');
 
 exports.createBanners = function (req, file, res) {
-    var banners = new bannersDetail();
-    banners.bannerImage = file.originalname;
-    banners.position = req.params.position;
-    banners.save(function (err, ads) {
+    bannersDetail.find({}).select().exec(function (err, finddata) {
         if (err) {
-            res.status(500).send({
-                "message": 'banners Not created'
-            });
-
+            res.status(500).json(err);
         } else {
-            res.status(200).json(ads);
+            if (finddata.length === 0) {
+                var banners = new bannersDetail();
+                banners.bannerImage = file.originalname;
+                banners.position = req.params.position;
+                banners.save(function (err, ads) {
+                    if (err) {
+                        res.status(500).send({
+                            "message": 'banners Not created'
+                        });
+
+                    } else {
+                        res.status(200).json(ads);
+                    }
+                });
+            } else {
+                finddata[0].bannerImage = file.originalname;
+                finddata[0].position = req.params.position;
+                finddata[0].save(function (err, data) {
+                    if (err) {
+                        res.status(500).json(err);
+                    } else {
+                        res.status(200).json(data);
+                    }
+                })
+            }
         }
-    });
+    })
+
 }
 exports.getBanners = function (req, res) {
     bannersDetail.find({}).select().sort({

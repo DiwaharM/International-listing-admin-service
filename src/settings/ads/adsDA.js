@@ -3,16 +3,36 @@ var appSetting = require('../../config/appSettings');
 var fs = require('fs');
 
 exports.createAdsImage = function (req, file, res) {
-    var ads = new adsDetail();
-    ads.adsImageName = file.originalname;
-    ads.position = req.params.position;
-    ads.save(function (err, data) {
+    adsDetail.find({}).select().exec(function (err, finddata) {
         if (err) {
             res.status(500).json(err);
         } else {
-            res.status(200).json(data);
+            if (finddata.length === 0) {
+                var ads = new adsDetail();
+                ads.adsImageName = file.originalname;
+                ads.position = req.params.position;
+                ads.save(function (err, data) {
+                    if (err) {
+                        res.status(500).json(err);
+                    } else {
+                        res.status(200).json(data);
+                    }
+                })
+            } else {
+                finddata[0].adsImageName = file.originalname;
+                finddata[0].position = req.params.position;
+                finddata[0].save(function (err, data) {
+                    if (err) {
+                        res.status(500).json(err);
+                    } else {
+                        res.status(200).json(data);
+                    }
+                })
+
+            }
         }
     })
+
 }
 exports.getImageForAds = function (req, res) {
     adsDetail.find({}).sort({
