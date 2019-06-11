@@ -62,7 +62,11 @@ exports.deleteAds = function (req, res) {
                 "result": 0
             });
         } else {
-            const PATH = appSetting.adsUploadPath + '/' + adsDetails[0].adsImageName;
+            if(adsDetails.length === 0) {
+                res.status(200).json(adsDetails);
+            }
+            else {
+   const PATH = appSetting.adsUploadPath + '/' + adsDetails[0].adsImageName;
             fs.unlink(PATH, (err) => {
                 if (err) {
                     throw err;
@@ -98,6 +102,8 @@ exports.deleteAds = function (req, res) {
                 }
 
             });
+            } 
+         
         }
     });
 }
