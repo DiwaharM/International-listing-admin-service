@@ -84,6 +84,10 @@ module.exports = function (app) {
     .delete(contactMgr.deleteContact);
 
     app.route('/createfaq')
+    .post(faqMgr.createFAQ);
+
+    
+    app.route('/getallfaq')
     .get(faqMgr.getFAQ);
 
     app.route('/getsinglefaq/:id')
