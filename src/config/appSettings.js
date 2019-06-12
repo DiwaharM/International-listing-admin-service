@@ -1,5 +1,5 @@
 module.exports = {
-/*     adsUploadPath: './images/ads',
+    /* adsUploadPath: './images/ads',
     adsServerPath: 'http://localhost/listing/ads/',
     bannerUploadPath: './images/banner',
     bannerServerPath: 'http://localhost/listing/banner/',

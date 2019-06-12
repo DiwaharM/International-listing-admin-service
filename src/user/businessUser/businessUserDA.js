@@ -107,27 +107,41 @@ exports.getTotalVistiorCount = function (req, res) {
     })
 }
 
-exports.deleteSingleCompanyImage = function(req, res) {
-    businessUserDetail.findOne({'_id': req.params.id}).select().exec(function(err, data) {
-        if(err) {
+exports.deleteSingleCompanyImage = function (req, res) {
+    businessUserDetail.findOne({
+        '_id': req.params.id
+    }).select().exec(function (err, data) {
+        if (err) {
             res.status(500).json(err);
         } else {
             const PATH = appSetting.businessUserUploadPath + '/' + req.params.id + '/' + 'companyImage' + '/' + req.body.companyImageName;
             fs.unlink(PATH, (err) => {
-                if(err) {
+                if (err) {
                     throw err;
                 } else {
-                    businessUserDetail.find({}).select().exec(function(err, data) {
-                        if(err) {
+                    businessUserDetail.update({
+                        '_id': req.params.id
+                    }, {
+                        $pull: {
+                            companyImageName: req.body.companyImageName
+                        }
+                    }).select().exec(function (err, data) {
+                        if (err) {
                             res.status(500).json(err);
                         } else {
-                            for (let i = 0; i <= data.length - 1; i++) {
-                                data[i].logImageName = appSetting.businessUserServerPath + data[i]._id + '/' + 'logo' + '/' + data[i].logImageName;
-                                for (let j = 0; j <= data[i].companyImageName.length - 1; j++) {
-                                    data[i].companyImageName[j] = appSetting.businessUserServerPath + data[i]._id + '/' + 'companyImage' + '/' + data[i].companyImageName[j];
+                            businessUserDetail.find({}).select().exec(function (err, data) {
+                                if (err) {
+                                    res.status(500).json(err);
+                                } else {
+                                    for (let i = 0; i <= data.length - 1; i++) {
+                                        data[i].logImageName = appSetting.businessUserServerPath + data[i]._id + '/' + 'logo' + '/' + data[i].logImageName;
+                                        for (let j = 0; j <= data[i].companyImageName.length - 1; j++) {
+                                            data[i].companyImageName[j] = appSetting.businessUserServerPath + data[i]._id + '/' + 'companyImage' + '/' + data[i].companyImageName[j];
+                                        }
+                                    }
+                                    res.status(200).json(data);
                                 }
-                            }
-                            res.status(200).json(data);
+                            })
                         }
                     })
                 }
