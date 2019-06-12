@@ -74,6 +74,9 @@ module.exports = function (app) {
     app.route('/getallcontact')
     .get(contactMgr.getAllContact);
 
+    app.route('/getsinglecontact/:id')
+    .get(contactMgr.getSingleContact);
+
     app.route('/updatecontact/:id')
     .put(contactMgr.updateContact);
 

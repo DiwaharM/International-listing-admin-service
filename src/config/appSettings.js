@@ -9,6 +9,7 @@ module.exports = {
     footerServerPath: 'http://localhost/listing/footer/',
     categoryUploadPath: "images/category",
     categoryServerPath: "http://localhost/listing/category/",
+    businessUserUploadPath: './images/businessuser',
     businessUserServerPath: 'http://localhost/list/businessuser/' */
 
     adsUploadPath: '/home/ubuntu/app/listing-admin-ui/listing-admin-panel/images/ads',

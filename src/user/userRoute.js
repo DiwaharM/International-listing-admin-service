@@ -12,4 +12,5 @@ module.exports = function (app) {
     app.route('/gettotalvisitorcount/:id').get(businessUserMgr.getTotalVistiorCount);
     app.route('/selectedreport/:id').get(reportMgr.getSelectedReport);
     app.route('/subscriberselectedreport/:id').get(reportMgr.getSubscriberSelectedReport);
+    app.route('/deletesinglecompnanyimage/:id').post(businessUserMgr.deleteSingleCompanyImage);
 }

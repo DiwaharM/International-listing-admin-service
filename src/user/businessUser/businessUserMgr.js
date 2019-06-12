@@ -58,3 +58,10 @@ exports.getTotalVistiorCount = function (req, res) {
         console.log(error);
     }
 }
+exports.deleteSingleCompanyImage = function (req, res) {
+    try {
+        businessUserDA.deleteSingleCompanyImage(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -14,6 +14,13 @@ exports.getAllContact = function (req, res) {
         console.log(error);
     }
 }
+exports.getSingleContact = function (req, res) {
+    try {
+        contactDA.getSingleContact(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+}
 exports.updateContact = function (req, res) {
     try {
         contactDA.updateContact(req, res);

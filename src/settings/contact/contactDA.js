@@ -1,5 +1,6 @@
 var contactDetail = require('../../model/contact.model');
 
+
 exports.createContact = function (req, res) {
     contactDetail.find({}).select().exec(function (err, data) {
         if (err) {
@@ -32,6 +33,15 @@ exports.createContact = function (req, res) {
 
 exports.getAllContact = function (req, res) {
     contactDetail.find({}).select().exec(function (err, data) {
+        if (err) {
+            res.status(500).json(err);
+        } else {
+            res.status(200).json(data);
+        }
+    })
+}
+exports.getSingleContact = function (req, res) {
+    contactDetail.findOne({'_id': req.params.id}).select().exec(function (err, data) {
         if (err) {
             res.status(500).json(err);
         } else {

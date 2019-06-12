@@ -15,13 +15,17 @@ exports.superCategoryInsert = function (req, res) {
                     "result": 0
                 });
             } else {
-                SuperCategory.find({}).select('categoryName  categoryDescription').exec(function (err, superCat) {
+                SuperCategory.find({}).select().exec(function (err, superCat) {
                     if (err) {
                         res.status(500).send({
                             message: "Some error occurred while retrieving notes."
                         });
                     } else {
-                        res.json(superCat);
+                        var categoryLength = superCat.length - 1;
+                                for (var i = 0; i <= categoryLength; i++) {
+                                    superCat[i].categoryImageName = appSetting.categoryServerPath + superCat[i].categoryName + '/' + superCat[i].categoryImageName;
+                                }
+                                res.status(200).json(superCat);
                     }
                 });
             }
