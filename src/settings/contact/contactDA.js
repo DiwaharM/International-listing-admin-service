@@ -41,7 +41,9 @@ exports.getAllContact = function (req, res) {
     })
 }
 exports.getSingleContact = function (req, res) {
-    contactDetail.findOne({'_id': req.params.id}).select().exec(function (err, data) {
+    contactDetail.findOne({
+        '_id': req.params.id
+    }).select().exec(function (err, data) {
         if (err) {
             res.status(500).json(err);
         } else {

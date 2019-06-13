@@ -1,6 +1,5 @@
 var promotionDetail = require('../../model/promotion.model');
 
-
 exports.createPromotions = function (req, res) {
     var promotions = new promotionDetail();
     promotions.promotionTitle = req.body.promotionTitle;
@@ -11,13 +10,11 @@ exports.createPromotions = function (req, res) {
             res.status(500).send({
                 "message": 'promotions Not created'
             });
-
         } else {
             res.status(200).json(promotions);
         }
     });
 }
-
 exports.getPromotion = function (req, res) {
     promotionDetail.find({}).select().exec(function (err, data) {
         if (err) {
@@ -27,8 +24,6 @@ exports.getPromotion = function (req, res) {
         }
     })
 }
-
-
 exports.deletePromotion = function (req, res) {
     promotionDetail.findByIdAndRemove({
         '_id': req.params.id

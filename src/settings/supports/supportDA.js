@@ -29,7 +29,6 @@ exports.createSupport = function (req, res) {
         }
     })
 }
-
 exports.getAllSuppot = function (req, res) {
     supportDetail.find({}).select().exec(function (err, data) {
         if (err) {

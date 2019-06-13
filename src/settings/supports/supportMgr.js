@@ -21,7 +21,6 @@ exports.updateSupport = function (req, res) {
         console.log(error);
     }
 }
-
 exports.deleteSupport = function (req, res) {
     try {
         supportDA.deleteSupport(req, res);

@@ -34,7 +34,6 @@ exports.getSelectedBusinessUser = function (req, res) {
         }
     })
 }
-
 exports.updateBusinessUserLogo = function (req, file, res) {
     businessUserDetail.find({
         '_id': req.params.id,
@@ -65,7 +64,6 @@ exports.updateBusinessUserLogo = function (req, file, res) {
         }
     });
 }
-
 exports.getCurrentVistiorCount = function (req, res) {
     businessUserDetail.findOne({
         '_id': req.params.id
@@ -87,8 +85,6 @@ exports.getCurrentVistiorCount = function (req, res) {
         }
     })
 }
-
-
 exports.getTotalVistiorCount = function (req, res) {
     businessUserDetail.findOne({
         '_id': req.params.id
@@ -106,7 +102,6 @@ exports.getTotalVistiorCount = function (req, res) {
         }
     })
 }
-
 exports.deleteSingleCompanyImage = function (req, res) {
     businessUserDetail.findOne({
         '_id': req.params.id

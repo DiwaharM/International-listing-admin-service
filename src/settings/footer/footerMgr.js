@@ -24,7 +24,6 @@ exports.createLogoImage = function (req, res) {
                 cb(null, file.originalname);
             }
         });
-
         let upload = multer({
             storage: storage
         }).array('uploads[]', 20); //only 20 images can be uploaded
@@ -36,24 +35,17 @@ exports.createLogoImage = function (req, res) {
                 });
             }
         });
-
     } catch (error) {
         console.log(error);
     }
 }
-
-
-
 exports.getFooterDetails = function (req, res) {
     try {
         footerDA.getFooterDetails(req, res);
-
     } catch (error) {
         console.log(error);
     }
 }
-
-
 exports.updateFooterDetails = function (req, res) {
     try {
         footerDA.updateFooterDetails(req, res);

@@ -62,48 +62,47 @@ exports.deleteAds = function (req, res) {
                 "result": 0
             });
         } else {
-            if(adsDetails.length === 0) {
+            if (adsDetails.length === 0) {
                 res.status(200).json(adsDetails);
-            }
-            else {
-   const PATH = appSetting.adsUploadPath + '/' + adsDetails[0].adsImageName;
-            fs.unlink(PATH, (err) => {
-                if (err) {
-                    throw err;
-                } else {
-                    adsDetail.findByIdAndRemove(req.params.id, function (err) {
-                        if (err) {
-                            res.status(500).send({
-                                "result": 0
-                            });
-                        } else {
-                            adsDetail.find({}).select().sort({
-                                position: 1
-                            }).exec(function (err, adsImages) {
-                                if (err) {
-                                    res.status(500).send({
-                                        message: "Some error occurred while retrieving notes."
-                                    });
-                                } else {
-                                    if (adsImages.length === 0) {
-                                        res.status(200).json(adsImages)
+            } else {
+                const PATH = appSetting.adsUploadPath + '/' + adsDetails[0].adsImageName;
+                fs.unlink(PATH, (err) => {
+                    if (err) {
+                        throw err;
+                    } else {
+                        adsDetail.findByIdAndRemove(req.params.id, function (err) {
+                            if (err) {
+                                res.status(500).send({
+                                    "result": 0
+                                });
+                            } else {
+                                adsDetail.find({}).select().sort({
+                                    position: 1
+                                }).exec(function (err, adsImages) {
+                                    if (err) {
+                                        res.status(500).send({
+                                            message: "Some error occurred while retrieving notes."
+                                        });
                                     } else {
-                                        var adsLength = adsImages.length - 1;
-                                        for (var i = 0; i <= adsLength; i++) {
-                                            adsImages[i].adsImageName = appSetting.adsServerPath + adsImages[i].adsImageName;
+                                        if (adsImages.length === 0) {
+                                            res.status(200).json(adsImages)
+                                        } else {
+                                            var adsLength = adsImages.length - 1;
+                                            for (var i = 0; i <= adsLength; i++) {
+                                                adsImages[i].adsImageName = appSetting.adsServerPath + adsImages[i].adsImageName;
+                                            }
+                                            res.status(200).json(adsImages);
                                         }
-                                        res.status(200).json(adsImages);
+
                                     }
+                                });
+                            }
+                        });
+                    }
 
-                                }
-                            });
-                        }
-                    });
-                }
+                });
+            }
 
-            });
-            } 
-         
         }
     });
 }

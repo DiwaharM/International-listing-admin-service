@@ -8,7 +8,6 @@ exports.getSelectedReport = function (req, res) {
             $match: {
                 _id: ObjectId(req.params.id)
             }
-
         }, {
             $unwind: "$customerLogs"
         },
@@ -41,13 +40,11 @@ exports.getSelectedReport = function (req, res) {
         }
     })
 }
-
 exports.getSubscriberSelectedReport = function (req, res) {
     businessuserDetail.aggregate([{
             $match: {
                 _id: ObjectId(req.params.id)
             }
-
         }, {
             $unwind: "$customerLogs"
         },

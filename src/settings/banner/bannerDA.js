@@ -34,7 +34,6 @@ exports.createBanners = function (req, file, res) {
             }
         }
     })
-
 }
 exports.getBanners = function (req, res) {
     bannersDetail.find({}).select().sort({
@@ -54,12 +53,9 @@ exports.getBanners = function (req, res) {
                 }
                 res.status(200).json(bannerImages);
             }
-
         }
     });
 }
-
-
 exports.deleteBanners = function (req, res) {
     bannersDetail.find({
         '_id': req.params.id

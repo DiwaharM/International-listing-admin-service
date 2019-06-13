@@ -1,7 +1,6 @@
 var PrivacyPolicy = require('../../model/policy.model');
 
 exports.createPrivacyPolicy = function (req, res) {
-
     PrivacyPolicy.find({}).select().exec(function (err, policyData) {
         if (err) {
             res.status(500).send({
@@ -10,7 +9,6 @@ exports.createPrivacyPolicy = function (req, res) {
         } else {
             var policy = new PrivacyPolicy(req.body);
             if (policyData.length === 0) {
-
                 policy.save(function (err, data) {
                     if (err) {
                         res.status(500).send({
@@ -28,12 +26,9 @@ exports.createPrivacyPolicy = function (req, res) {
                         })
                     }
                 })
-
-
             } else {
                 policyData[0].policyHeading = req.body.policyHeading;
                 policyData[0].policies = req.body.policies;
-
                 policyData[0].save(function (err, data) {
                     if (err) {
                         res.status(500).send({
@@ -51,7 +46,6 @@ exports.createPrivacyPolicy = function (req, res) {
                         })
                     }
                 })
-
             }
         }
     });
@@ -99,7 +93,6 @@ exports.updatePrivacyPolicy = function (req, res) {
         }
     });
 }
-
 exports.deletePolicy = function (req, res) {
     PrivacyPolicy.findByIdAndRemove({
         '_id': req.params.id

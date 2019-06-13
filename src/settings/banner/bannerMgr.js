@@ -14,7 +14,6 @@ exports.createBanners = function (req, res) {
                 cb(null, file.originalname);
             }
         });
-
         let upload = multer({
             storage: storage
         }).array('uploads[]', 20); //only 20 images can be uploaded
@@ -26,7 +25,6 @@ exports.createBanners = function (req, res) {
                 });
             }
         });
-
     } catch (error) {
         console.log(error);
     }

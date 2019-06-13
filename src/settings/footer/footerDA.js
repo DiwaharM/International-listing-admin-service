@@ -2,9 +2,7 @@ var Footer = require('../../model/footer.model');
 var appSetting = require('../../config/appSettings');
 var fs = require('fs');
 
-
 exports.createFooter = function (req, res) {
-
     Footer.find({}).select().exec(function (err, footerData) {
         if (err) {
             res.status(500).send({
@@ -13,7 +11,6 @@ exports.createFooter = function (req, res) {
         } else {
             var footer = new Footer(req.body);
             if (footerData.length == 0) {
-
                 footer.save(function (err, data) {
                     if (err) {
                         res.status(500).send({
@@ -31,8 +28,6 @@ exports.createFooter = function (req, res) {
                         })
                     }
                 })
-
-
             } else {
                 footerData[0].address = req.body.address;
                 footerData[0].instagramLink = req.body.instagramLink;
@@ -44,7 +39,6 @@ exports.createFooter = function (req, res) {
                 footerData[0].contactNo = req.body.contactNo;
                 footerData[0].alternativeContactNo = req.body.alternativeContactNo;
                 footerData[0].mailId = req.body.mailId;
-
                 footerData[0].save(function (err, data) {
                     if (err) {
                         res.status(500).send({
@@ -62,13 +56,10 @@ exports.createFooter = function (req, res) {
                         })
                     }
                 })
-
             }
         }
     });
 }
-
-
 exports.createLogoImage = function (req, file, res) {
     Footer.find({
         '_id': req.params.id,
@@ -99,7 +90,6 @@ exports.createLogoImage = function (req, file, res) {
         }
     });
 }
-
 exports.getFooterDetails = function (req, res) {
     Footer.find({}).select().exec(function (err, footerData) {
         if (err) {
@@ -114,7 +104,6 @@ exports.getFooterDetails = function (req, res) {
         }
     })
 }
-
 exports.updateFooterDetails = function (req, res) {
     Footer.find({
         '_id': req.params.id,

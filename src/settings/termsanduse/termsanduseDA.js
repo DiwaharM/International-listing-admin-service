@@ -28,7 +28,6 @@ exports.createTerm = function (req, res) {
         }
     })
 }
-
 exports.getAllTerm = function (req, res) {
     termDetail.find({}).select().exec(function (err, data) {
         if (err) {
@@ -38,7 +37,6 @@ exports.getAllTerm = function (req, res) {
         }
     })
 }
-
 exports.updateTerms = function (req, res) {
     termDetail.findOne({
         '_id': req.params.id

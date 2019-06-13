@@ -7,7 +7,6 @@ exports.superCategoryInsert = function (req, res) {
     var superCategoryData = new SuperCategory(req.body);
     superCategoryData.categoryName = req.body.categoryName;
     superCategoryData.categoryDescription = req.body.categoryDescription;
-/*     superCategoryData.keyWord = req.body.keyWord; */
     superCategoryData.save(
         function (err, superCat) {
             if (err) { // if it contains error return 0
@@ -22,10 +21,10 @@ exports.superCategoryInsert = function (req, res) {
                         });
                     } else {
                         var categoryLength = superCat.length - 1;
-                                for (var i = 0; i <= categoryLength; i++) {
-                                    superCat[i].categoryImageName = appSetting.categoryServerPath + superCat[i].categoryName + '/' + superCat[i].categoryImageName;
-                                }
-                                res.status(200).json(superCat);
+                        for (var i = 0; i <= categoryLength; i++) {
+                            superCat[i].categoryImageName = appSetting.categoryServerPath + superCat[i].categoryName + '/' + superCat[i].categoryImageName;
+                        }
+                        res.status(200).json(superCat);
                     }
                 });
             }
@@ -39,7 +38,6 @@ exports.superCategoryEdit = function (req, res) {
         else {
             superCat.categoryName = req.body.categoryName;
             superCat.categoryDescription = req.body.categoryDescription;
-          /*   superCat.keyWord = req.body.keyWord; */
             superCat.save(
                 function (err) {
                     if (err) { // if it contains error return 0
@@ -48,8 +46,6 @@ exports.superCategoryEdit = function (req, res) {
                         });
                     } else {
                         /*  res.status(200).json(SuperCategory); */
-
-
                         SuperCategory.find({}).select().exec(function (err, superCat) {
                             if (err) {
                                 res.status(500).send({
@@ -63,12 +59,8 @@ exports.superCategoryEdit = function (req, res) {
                                 res.status(200).json(superCat);
                             }
                         });
-
-
-
                     }
                 });
-
         }
     });
 }
@@ -109,15 +101,12 @@ exports.superCategoryDelete = function (req, res) {
     });
 }
 
-
-
 exports.createSuperCategoryImage = function (req, file, res) {
     SuperCategory.findOne({
         '_id': req.params.id,
     }, function (err, categoryDetail) {
         if (err) {
             console.log(err);
-
         } else {
             if (categoryDetail.categoryImageName === undefined || categoryDetail.categoryImageName.length === 0) {
                 categoryDetail.categoryImageName = file.originalname;
@@ -172,8 +161,6 @@ exports.createSuperCategoryImage = function (req, file, res) {
                     })
                 }
             }
-
-
         }
     });
 }
@@ -192,5 +179,4 @@ exports.superCategoryShow = function (req, res) {
             res.status(200).json(superCat);
         }
     });
-
 }

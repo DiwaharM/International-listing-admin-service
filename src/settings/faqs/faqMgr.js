@@ -1,7 +1,5 @@
 var faqDA = require('./faqDA');
 
-
-
 exports.createFAQ = function (req, res) {
     try {
         faqDA.createFAQ(req, res);
@@ -10,7 +8,6 @@ exports.createFAQ = function (req, res) {
         console.log(error);
     }
 }
-
 exports.getFAQ = function (req, res) {
     try {
         faqDA.getFAQ(req, res);
@@ -27,8 +24,6 @@ exports.getSingleFAQ = function (req, res) {
         console.log(error);
     }
 }
-
-
 exports.deleteFAQ = function (req, res) {
     try {
         faqDA.deleteFAQ(req, res);

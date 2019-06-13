@@ -13,7 +13,6 @@ exports.createHeader = function (req, file, res) {
             header.status = 0;
             header.logoImageName = file.originalname;
             if (headerData.length == 0) {
-
                 header.save(function (err, data) {
                     if (err) {
                         res.status(500).send({
@@ -32,7 +31,6 @@ exports.createHeader = function (req, file, res) {
                         });
                     }
                 })
-
             } else {
                 headerData[0].logoImageName = file.originalname;
                 headerData[0].save(function (err, data) {
@@ -53,12 +51,10 @@ exports.createHeader = function (req, file, res) {
                         });
                     }
                 })
-
             }
         }
     });
 }
-
 exports.getImageForHeader = function (req, res) {
     headerDetail.find({}).sort({
         position: 1
@@ -74,7 +70,6 @@ exports.getImageForHeader = function (req, res) {
                 }
                 res.status(200).json(data);
             }
-
         }
     })
 }

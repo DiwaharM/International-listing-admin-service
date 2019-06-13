@@ -7,7 +7,6 @@ exports.createTerm = function (req, res) {
         console.log(error);
     }
 }
-
 exports.getAllTerm = function (req, res) {
     try {
         termDA.getAllTerm(req, res);

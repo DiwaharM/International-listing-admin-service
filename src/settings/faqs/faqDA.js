@@ -19,9 +19,7 @@ exports.createFAQ = function (req, res) {
             })
         }
     })
-
 }
-
 exports.getFAQ = function (req, res) {
     FAQ.find({}).select().exec(function (err, faqData) {
         if (err) {
@@ -43,31 +41,25 @@ exports.getSingleFAQ = function (req, res) {
             })
         } else {
             res.status(200).json(faqData[0]);
-
         }
     })
 }
 exports.deleteFAQ = function (req, res) {
-
     FAQ.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.status(500).send({
                 "result": 0
             });
         } else {
-
             FAQ.find({}).select().exec(function (err, faqData) {
                 if (err) {
                     res.status(500).send({
                         message: "Some error occurred while retrieving notes."
                     });
                 } else {
-
                     res.status(200).json(faqData);
                 }
             });
-
-
         }
     });
 }

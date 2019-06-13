@@ -5,8 +5,6 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 var appSetting = require('../../config/appSettings');
 
-
-
 exports.superCategoryInsert = function (req, res) {
     try {
         superCategoryDA.superCategoryInsert(req, res);
@@ -14,9 +12,6 @@ exports.superCategoryInsert = function (req, res) {
         console.log(error);
     }
 }
-
-
-
 exports.superCategoryEdit = function (req, res) {
     try {
         superCategoryDA.superCategoryEdit(req, res);
@@ -25,9 +20,6 @@ exports.superCategoryEdit = function (req, res) {
     }
 
 }
-
-
-
 exports.superCategoryDelete = function (req, res) {
     try {
         superCategoryDA.superCategoryDelete(req, res);
@@ -70,14 +62,10 @@ exports.createSuperCategoryImage = function (req, res) {
                 });
             }
         });
-
-
     } catch (error) {
         console.log(error);
     }
 }
-
-
 exports.superCategoryShow = function (req, res) {
     try {
         superCategoryDA.superCategoryShow(req, res);

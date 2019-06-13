@@ -12,128 +12,128 @@ var paymentPackageMgr = require('./paymentPackage/paymentPackageMgr');
 
 module.exports = function (app) {
     app.route('/adsforupload/:position')
-    .put(adsMgr.createAdsImage);
+        .put(adsMgr.createAdsImage);
 
     app.route('/getimageforads')
-    .get(adsMgr.getImageForAds);
+        .get(adsMgr.getImageForAds);
 
     app.route('/deleteads/:id')
-    .delete(adsMgr.deleteAds);
+        .delete(adsMgr.deleteAds);
 
     app.route('/bannerforupload/:position')
-    .put(bannerMgr.createBanners);
+        .put(bannerMgr.createBanners);
 
     app.route('/getimageforbanner')
-    .get(bannerMgr.getBanners);
+        .get(bannerMgr.getBanners);
 
     app.route('/deletebanner/:id')
-    .delete(bannerMgr.deleteBanners);
+        .delete(bannerMgr.deleteBanners);
 
     app.route('/headerforupload')
-    .post(headerMgr.createHeader);
+        .post(headerMgr.createHeader);
 
     app.route('/getimageforheader')
-    .get(headerMgr.getImageForHeader);
+        .get(headerMgr.getImageForHeader);
 
     app.route('/termforupload')
-    .post(termMgr.createTerm);
+        .post(termMgr.createTerm);
 
     app.route('/getallterm')
-    .get(termMgr.getAllTerm);
+        .get(termMgr.getAllTerm);
 
     app.route('/updateterms/:id')
-    .delete(termMgr.deleteTerms);
+        .delete(termMgr.deleteTerms);
 
     app.route('/createsupport')
-    .post(supportMgr.createSupport);
+        .post(supportMgr.createSupport);
 
     app.route('/getallsupport')
-    .get(supportMgr.getAllSuppot);
+        .get(supportMgr.getAllSuppot);
 
     app.route('/updatesupport/:id')
-    .put(supportMgr.updateSupport);
+        .put(supportMgr.updateSupport);
 
     app.route('/deletesupport/:id')
-    .delete(supportMgr.deleteSupport);
+        .delete(supportMgr.deleteSupport);
 
     app.route('/createpolicy')
-    .post(policyMgr.createPrivacyPolicy);
+        .post(policyMgr.createPrivacyPolicy);
 
     app.route('/getallpolicy')
-    .get(policyMgr.getPrivacyPolicy);
+        .get(policyMgr.getPrivacyPolicy);
 
     app.route('/updatepolicy/:id')
-    .put(policyMgr.updatePrivacyPolicy);
+        .put(policyMgr.updatePrivacyPolicy);
 
     app.route('/deletepolicy/:id')
-    .delete(policyMgr.deletePolicy);
+        .delete(policyMgr.deletePolicy);
 
     app.route('/createcontact')
-    .post(contactMgr.createContact);
+        .post(contactMgr.createContact);
 
     app.route('/getallcontact')
-    .get(contactMgr.getAllContact);
+        .get(contactMgr.getAllContact);
 
     app.route('/getsinglecontact/:id')
-    .get(contactMgr.getSingleContact);
+        .get(contactMgr.getSingleContact);
 
     app.route('/updatecontact/:id')
-    .put(contactMgr.updateContact);
+        .put(contactMgr.updateContact);
 
     app.route('/deletecontact/:id')
-    .delete(contactMgr.deleteContact);
+        .delete(contactMgr.deleteContact);
 
     app.route('/createfaq')
-    .post(faqMgr.createFAQ);
+        .post(faqMgr.createFAQ);
 
-    
+
     app.route('/getallfaq')
-    .get(faqMgr.getFAQ);
+        .get(faqMgr.getFAQ);
 
     app.route('/getsinglefaq/:id')
-    .get(faqMgr.getSingleFAQ);
+        .get(faqMgr.getSingleFAQ);
 
     app.route('/updatefaq/:id')
-    .put(faqMgr.updateFAQ);
+        .put(faqMgr.updateFAQ);
 
     app.route('/deletefaq/:id')
-    .delete(faqMgr.deleteFAQ);
+        .delete(faqMgr.deleteFAQ);
 
     app.route('/footer')
-    .post(footerMgr.createFooter);
+        .post(footerMgr.createFooter);
 
     app.route('/createLogoImage/:id')
-    .put(footerMgr.createLogoImage);
+        .put(footerMgr.createLogoImage);
 
     app.route('/footerDetails')
-    .get(footerMgr.getFooterDetails);
+        .get(footerMgr.getFooterDetails);
 
     app.route('/updatefotterdetails/:id')
-    .put(footerMgr.updateFooterDetails);
+        .put(footerMgr.updateFooterDetails);
 
     app.route('/addpromotions')
-    .post(promotionMgr.createPromotions);
+        .post(promotionMgr.createPromotions);
 
     app.route('/getpromotions')
-    .get(promotionMgr.getPromotion);
+        .get(promotionMgr.getPromotion);
 
     app.route('/deletepromotion/:id')
-    .delete(promotionMgr.deletePromotion);
+        .delete(promotionMgr.deletePromotion);
 
     // payment Package
 
-    app.route('/createPayment')                                   // create Payment package
-    .post(paymentPackageMgr.createPayment);
+    app.route('/createPayment') // create Payment package
+        .post(paymentPackageMgr.createPayment);
 
-    app.route('/getallpayment')                                   // get all payment package
-    .get(paymentPackageMgr.getAllPackage);
+    app.route('/getallpayment') // get all payment package
+        .get(paymentPackageMgr.getAllPackage);
 
-    app.route('/updatepayment/:id')                                // update payment package
-    .put(paymentPackageMgr.updatePackage);
+    app.route('/updatepayment/:id') // update payment package
+        .put(paymentPackageMgr.updatePackage);
 
-    app.route('/singlepayment/:id')                                // get single payment package
-    .get(paymentPackageMgr.getSinglePackage);
+    app.route('/singlepayment/:id') // get single payment package
+        .get(paymentPackageMgr.getSinglePackage);
 
-    app.route('/deletepayment/:id')                                // delete payment package
-    .delete(paymentPackageMgr.deletePackage);
+    app.route('/deletepayment/:id') // delete payment package
+        .delete(paymentPackageMgr.deletePackage);
 }
