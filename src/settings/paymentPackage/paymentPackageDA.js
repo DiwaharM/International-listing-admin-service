@@ -10,6 +10,7 @@ exports.createPayment = function(req, res) {
                 payment.duration = req.body.duration;
                 payment.amount = req.body.amount;
                 payment.grade = req.body.grade;
+                payment.month = req.body.month;
               /*   payment.startingDate = starting;
                 payment.closingDate = closing; */
                 payment.description = req.body.description;
@@ -45,6 +46,7 @@ exports.updatePackage = function(req, res) {
             if(data.length !== 0) {
                 data.duration = req.body.duration;
                 data.amount = req.body.amount;
+                data.month = req.body.month;
                 data.description = req.body.description;
                 data.grade = req.body.grade;
                 data.save(function(err, packageDetail) {
